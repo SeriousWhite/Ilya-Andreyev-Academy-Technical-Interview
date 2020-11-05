@@ -20,6 +20,13 @@ function Form(props) {
         /**
          * TODO: Implement validation of all fields.
          */
+        Object.entries({ firstName, lastName, DOB, gender }).forEach(([key, value]) => {
+            if (!value) {
+                messages.push(`The ${key} is required`);
+            } else if ((key === 'firstName' || key === 'lastName') && value.length > 30) {
+                messages.push(`The ${key} should not be longer than 30 symbols`);
+            }
+        });
         setValidationMessages(messages);
     }
     return (
